@@ -1,0 +1,418 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{24795A06-CFB7-4B57-B601-72FD2605A8F3}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>dotPLC</RootNamespace>
+    <AssemblyName>dotPLC</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CustomControl\ControlExtenders\DockExtender.cs" />
+    <Compile Include="CustomControl\ControlExtenders\Floaty.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CustomControl\ControlExtenders\Overlay.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CustomControl\CustomProgressBar.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CustomControl\DataGridViewTextAndImage\DataGridViewTextAndImageCell.cs" />
+    <Compile Include="CustomControl\DataGridViewTextAndImage\DataGridViewTextAndImageColumn.cs" />
+    <Compile Include="CustomControl\frmAbout.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CustomControl\frmAbout.Designer.cs">
+      <DependentUpon>frmAbout.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControl\frmAlert.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CustomControl\frmAlert.Designer.cs">
+      <DependentUpon>frmAlert.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControl\frmDeviceMemory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CustomControl\frmDeviceMemory.Designer.cs">
+      <DependentUpon>frmDeviceMemory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControl\frmDownloadFile.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CustomControl\frmDownloadFile.Designer.cs">
+      <DependentUpon>frmDownloadFile.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControl\frmExtractFile.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CustomControl\frmExtractFile.Designer.cs">
+      <DependentUpon>frmExtractFile.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControl\frmListClients.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CustomControl\frmListClients.Designer.cs">
+      <DependentUpon>frmListClients.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControl\frmNetworkSetting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CustomControl\frmNetworkSetting.Designer.cs">
+      <DependentUpon>frmNetworkSetting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControl\frmOptions.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CustomControl\frmOptions.Designer.cs">
+      <DependentUpon>frmOptions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControl\frmUpdateVersion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CustomControl\frmUpdateVersion.Designer.cs">
+      <DependentUpon>frmUpdateVersion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControl\Fx5uCpu.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomControl\Fx5uCpu.Designer.cs">
+      <DependentUpon>Fx5uCpu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControl\TextProgressBar.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CustomControl\ToggleButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CustomControl\ToolStripHelper\ToolStripButtonEx.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CustomControl\ToolStripHelper\ToolStripEx.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CustomControl\ToolStripHelper\ToolStripSplitButtonEx.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CustomControl\TransparentLabel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CustomControl\TransparentLabel.Designer.cs">
+      <DependentUpon>TransparentLabel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMain.Designer.cs">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Settings\DvgWatch.cs" />
+    <Compile Include="Settings\NativeMethods.cs" />
+    <Compile Include="Settings\Setting.cs" />
+    <Compile Include="Settings\UpdateVersion.cs" />
+    <Compile Include="SocketServer\DataConvertExtendsion.cs" />
+    <Compile Include="SocketServer\Memory.cs" />
+    <Compile Include="SocketServer\SLMPServer.cs" />
+    <EmbeddedResource Include="CustomControl\frmAbout.resx">
+      <DependentUpon>frmAbout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomControl\frmAlert.resx">
+      <DependentUpon>frmAlert.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomControl\frmDeviceMemory.resx">
+      <DependentUpon>frmDeviceMemory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomControl\frmDownloadFile.resx">
+      <DependentUpon>frmDownloadFile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomControl\frmExtractFile.resx">
+      <DependentUpon>frmExtractFile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomControl\frmListClients.resx">
+      <DependentUpon>frmListClients.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomControl\frmNetworkSetting.resx">
+      <DependentUpon>frmNetworkSetting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomControl\frmOptions.resx">
+      <DependentUpon>frmOptions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomControl\frmUpdateVersion.resx">
+      <DependentUpon>frmUpdateVersion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomControl\Fx5uCpu.resx">
+      <DependentUpon>Fx5uCpu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMain.resx">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <None Include="update.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fx5uCpu.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fx5uCpu_bluem.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\copy.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cut.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\paste.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\delete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\help.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\start.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\stop.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\devicelist.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\up.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\up1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\up2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\up3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\down.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\down2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\up4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\down5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\down1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\down1000.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\up1000.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\down100.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\up100.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\net.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\watch.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\delete_.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\stopcount_.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\stopcount1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\stopcount.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\stopcountred.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\settime.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_stop_sign_16px_6.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_stop_sign_16px_7.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\systemtray.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fx5u_Transparent.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Options.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\option.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cleardata.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\edit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_stop_sign_16px_3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\keepOffTop.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\keepOnTop.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\success.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\warning.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cancel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\error.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\info.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dotPLC.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\About.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dotPLC48x48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dotPLC32x32png.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iplist.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\UnzipV2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\download.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Transparent.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\loading.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\downloadFile.ico" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
